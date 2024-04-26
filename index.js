@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 5000;
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config();
 
 
@@ -38,6 +38,19 @@ async function run() {
       const result = await spotCollection.insertOne(req.body);
       console.log(result);
       res.send(result)
+    })
+
+    app.get("/mySpot/:email", async (req, res) => {
+      console.log(req.params.email);
+      const result = await spotCollection.find({ email: req.params.email }).toArray();
+      res.send(result)
+    })
+
+    
+
+    app.delete('/delete/:id', async (req, res) => {
+      const result = await spotCollection.deleteOne({ _id: new ObjectId(req.params.id) });
+      res.send(result);
     })
 
 
