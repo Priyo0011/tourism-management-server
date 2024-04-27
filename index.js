@@ -34,7 +34,7 @@ async function run() {
       res.send(result);
     });
     app.get('/spot', async (req, res) => {
-      console.log(req);
+
       const cursor = spotCollection.find();
       const result = await cursor.toArray();
       res.send(result);
