@@ -34,6 +34,7 @@ async function run() {
       res.send(result);
     });
     app.get('/spot', async (req, res) => {
+      console.log(req);
       const cursor = spotCollection.find();
       const result = await cursor.toArray();
       res.send(result);
@@ -90,7 +91,7 @@ async function run() {
       "Pinged your deployment. You successfully connected to MongoDB!"
     );
   } finally {
-    // Ensures that the client will close when you finish/error
+    
     // await client.close();
   }
 }
