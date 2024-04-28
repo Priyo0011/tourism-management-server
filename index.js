@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
+
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 require("dotenv").config();
 
@@ -22,7 +23,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    await client.connect();
+    
 
     const spotCollection = client.db("spotDB").collection("spot");
 
